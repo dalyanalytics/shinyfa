@@ -4,11 +4,11 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of shinyfa is to ...
+The goal of {shinyfa} is to provide Shiny developers analysis tools understand file contents of particularly large Shiny app directories.
 
 ## Installation
 
-You can install the development version of shinyfa from [GitHub](https://github.com/) with:
+You can install the development version of {shinyfa} from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
@@ -22,5 +22,6 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(shinyfa)
 ## basic example code
+analyze_shiny_reactivity(file_path)
 ```
 
