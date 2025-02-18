@@ -3,6 +3,7 @@
 #' Identifies all `input$` dependencies within a render block, extracting them as a comma-separated string.
 #'
 #' @param render_block A character vector representing a block of Shiny server code.
+#' @importFrom stringr str_extract_all
 #' @return A string of unique input IDs used within the render block, or `"None"` if no inputs are found.
 #' @export
 extract_input_dependencies <- function(render_block) {
