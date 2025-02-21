@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_input_dependencies.R
 \name{extract_input_dependencies}
 \alias{extract_input_dependencies}
-\title{Extract input dependencies from a render block}
+\title{Extract input dependencies from a Shiny render block}
 \usage{
 extract_input_dependencies(render_block)
 }
@@ -13,5 +13,5 @@ extract_input_dependencies(render_block)
 A string of unique input IDs used within the render block, or \code{"None"} if no inputs are found.
 }
 \description{
-Identifies all \verb{input$} dependencies within a render block, extracting them as a comma-separated string.
+Identifies all \verb{input$} dependencies within a render block, including cases like \code{input$var} and \code{input[['var']]}.
 }

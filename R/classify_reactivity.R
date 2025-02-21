@@ -8,10 +8,10 @@
 #' @return A string indicating the type of reactivity detected.
 #' @export
 classify_reactivity <- function(render_block) {
-  if (any(str_detect(render_block, "eventReactive\\("))) return("Event-Triggered Reactive")
-  if (any(str_detect(render_block, "observeEvent\\("))) return("Observer")
-  if (any(str_detect(render_block, "reactiveValues\\("))) return("Reactive Values")
-  if (any(str_detect(render_block, "reactive\\("))) return("Reactive Expression")
-  if (any(str_detect(render_block, "isolate\\("))) return("Isolated Expression")
+  if (any(stringr::str_detect(render_block, "eventReactive\\("))) return("Event-Triggered Reactive")
+  if (any(stringr::str_detect(render_block, "observeEvent\\("))) return("Observer")
+  if (any(stringr::str_detect(render_block, "reactiveValues\\("))) return("Reactive Values")
+  if (any(stringr::str_detect(render_block, "isolate\\("))) return("Isolated Expression")
+  if (any(stringr::str_detect(render_block, "reactive\\("))) return("Reactive Expression")
   return("Direct")
 }

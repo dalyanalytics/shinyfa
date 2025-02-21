@@ -9,9 +9,9 @@
 read_shiny_file <- function(file_path) {
   server_code <- readLines(file_path, warn = FALSE)
 
-  # Remove empty lines and comments
-  non_empty_lines <- grep("^\\s*[^#]", server_code, value = TRUE)
-  source_only <- all(grepl("^\\s*source\\(", non_empty_lines))
+  # Skip files that only contain `source()` calls
+  non_empty_lines <- grep("^\\s*[^#]", server_code, value = TRUE)  # Remove empty lines and comments
+  source_only <- all(grepl("^\\s*source\\(", non_empty_lines))  # Check if all remaining lines are `source()`
 
   if (length(non_empty_lines) == 0 || source_only) {
     message("Skipping file: ", basename(file_path), " (only contains source() calls or is empty)")

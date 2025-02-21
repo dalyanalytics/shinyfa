@@ -8,41 +8,39 @@
 #' @return A data frame containing named reactive expressions with their corresponding input dependencies.
 #' @export
 extract_named_reactives <- function(server_code) {
-  # Updated regex to capture reactive assignments, with flexibility for spaces
-  reactive_expressions <- grep("\\w+\\s*<-\\s*\\s*reactive\\s*\\(", server_code, value = TRUE)
+  reactive_expressions <- grep("(\\w+)\\s*<-\\s*reactive\\(", server_code, value = TRUE)
+  reactive_names <- str_match(reactive_expressions, "^(\\w+)\\s*<-\\s*reactive\\(")[,2]
 
-  # If no match found for reactive expressions
-  if (length(reactive_expressions) == 0) {
-    return(data.frame())
-  }
-
-  # Extract the names of the reactive expressions using str_match
-  reactive_names <- str_match(reactive_expressions, "^(\\w+)\\s*<-\\s*\\s*reactive\\s*\\(")[,2]
-
-  # Initialize a list to store results
   reactive_list <- list()
-
-  # Check if we have any reactive names
-  if (length(reactive_names) > 0) {
+  if (!is.na(reactive_names[1])) {
     for (reactive_name in reactive_names) {
-      # Find the block of code corresponding to the reactive expression
+      # Extract the block of code for the reactive expression
       start_idx <- grep(paste0("^", reactive_name, "\\s*<-\\s*reactive\\("), server_code)
-      reactive_block <- server_code[start_idx:length(server_code)]
+      block_end <- which(grepl("^\\s*}\\s*$", server_code[start_idx:length(server_code)]))[1] + start_idx - 1
+      if (is.na(block_end)) block_end <- min(start_idx + 10, length(server_code))  # Fallback
 
-      # Look for input dependencies within the reactive block using the same extract logic
-      input_dependencies <- extract_input_dependencies(reactive_block)
+      reactive_block <- server_code[start_idx:block_end]
 
-      # Add to the list
+      # Extract input dependencies
+      input_regex <- "input\\$(\\w+)|input\\[['\"](\\w+)['\"]"
+      input_matches <- unlist(str_extract_all(reactive_block, input_regex))
+      input_matches <- gsub("input\\$", "", input_matches)  # Remove 'input$'
+      input_matches <- gsub("input\\[['\"]|['\"]", "", input_matches)  # Remove quotes/brackets
+      input_values <- if (length(input_matches) > 0) paste(unique(input_matches), collapse = ", ") else "None"
+
       reactive_list[[length(reactive_list) + 1]] <- data.frame(
         outputId = reactive_name,
         render_function = "reactive()",
         reactivity_type = "Named Reactive Expression",
-        input_values = input_dependencies,  # Add the input values detected
+        input_values = input_values,
         stringsAsFactors = FALSE
       )
     }
   }
 
-  # Return the final data frame of reactive expressions and their input dependencies
-  return(do.call(rbind, reactive_list))
+  if (length(reactive_list) > 0) {
+    return(do.call(rbind, reactive_list))
+  } else {
+    return(NULL)
+  }
 }

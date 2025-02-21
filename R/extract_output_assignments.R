@@ -9,16 +9,26 @@
 #' @export
 extract_output_assignments <- function(server_code) {
   output_lines_indices <- grep("output\\$", server_code)
+
+  # Return empty list if no output assignments exist
+  if (length(output_lines_indices) == 0) {
+    return(list())
+  }
+
   results <- list()
 
   for (idx in output_lines_indices) {
     line <- server_code[idx]
-    match <- str_match(line, "output\\$(\\w+)\\s*<-\\s*(render\\w+)")
+
+    # Extract outputId and render function
+    match <- stringr::str_match(line, "output\\$(\\w+)\\s*<-\\s*(render\\w+)")
 
     if (!is.na(match[1])) {
-      output_id <- match[2]
-      render_type <- match[3]
-      results[[length(results) + 1]] <- list(index = idx, output_id = output_id, render_type = render_type)
+      results[[length(results) + 1]] <- list(
+        index = idx,
+        output_id = match[2],
+        render_type = match[3]
+      )
     }
   }
 

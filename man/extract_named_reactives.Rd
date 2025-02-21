@@ -10,8 +10,9 @@ extract_named_reactives(server_code)
 \item{server_code}{A character vector representing lines of Shiny server code.}
 }
 \value{
-A data frame containing named reactive expressions with their corresponding attributes.
+A data frame containing named reactive expressions with their corresponding input dependencies.
 }
 \description{
 Identifies \code{reactive()} assignments that are stored in variables and returns a data frame.
+Additionally, it checks for any input dependencies inside the \code{reactive()} function.
 }
