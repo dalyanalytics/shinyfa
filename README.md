@@ -1,12 +1,17 @@
 
-# shinyfa
+# shinyfa 
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-The goal of {shinyfa} is to provide Shiny developers analysis tools understand file contents of particularly large Shiny app directories.
-The *fa* portion of *shinyfa* stands for file analysis.
+The `{shinyfa}` package is designed to help Shiny developers analyze and understand the file contents of large Shiny app directories.  
+
+Large Shiny applications often contain numerous files that define both dynamic UI and server components, sometimes linked together in complex sourcing chains (though this is less common in Shiny apps structured with modules). For new contributors—such as consultants joining a project—it can take considerable time to onboard, navigate the codebase, and identify areas for optimization.  
+
+This in-progress package aims to streamline that process by extracting key information from a Shiny app directory. It identifies specific render functions, reactive functions, and their inputs, organizing them into a structured `data.frame` for easy reference.  
+
+The *fa* in *shinyfa* stands for *file analysis*.
 
 ## Installation
 
@@ -19,7 +24,7 @@ pak::pak("dalyanalytics/shinyfa")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to solve a common problem for looping through a directory that contains server files:
 
 ``` r
 library(shinyfa)
