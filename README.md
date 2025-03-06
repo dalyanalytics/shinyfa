@@ -3,6 +3,7 @@
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test coverage](https://codecov.io/gh/dalyanalytics/shinyfa/graph/badge.svg)](https://app.codecov.io/gh/dalyanalytics/shinyfa)
 <!-- badges: end -->
 
 The `{shinyfa}` package is designed to help Shiny developers analyze and understand the file contents of large Shiny app directories.  
