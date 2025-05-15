@@ -2,6 +2,7 @@
 
 <img src="https://media.githubusercontent.com/media/dalyanalytics/shinyfa/refs/heads/main/man/figures/shinyfa-logo.png" align="right" alt="shinyfa logo" width="200" />
 
+
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/dalyanalytics/shinyfa/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/dalyanalytics/shinyfa/actions/workflows/pkgdown.yaml)

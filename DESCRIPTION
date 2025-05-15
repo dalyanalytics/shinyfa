@@ -4,6 +4,7 @@ Version: 0.0.0.9000
 Authors@R: person("Jasmine", "Daly",  email = "jasmine.dumas@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8006-2428"))
 Description: What the package does (one paragraph).
+URL: https://github.com/dalyanalytics/shinyfa, https://dalyanalytics.github.io/shinyfa/
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -13,4 +14,3 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-URL: https://dalyanalytics.github.io/shinyfa/
