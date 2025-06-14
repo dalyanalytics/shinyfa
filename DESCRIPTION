@@ -3,8 +3,14 @@ Title: Analyze the File Contents of Shiny Directories
 Version: 0.0.0.9000
 Authors@R: person("Jasmine", "Daly",  email = "jasmine.dumas@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8006-2428"))
-Description: What the package does (one paragraph).
+Description: Provides tools for analyzing and understanding the file contents of 
+    large Shiny application directories. The package extracts key information about 
+    render functions, reactive functions, and their inputs from Shiny app files, 
+    organizing them into structured data frames for easy reference. This streamlines 
+    the onboarding process for new contributors and helps identify areas for 
+    optimization in complex Shiny codebases with multiple files and sourcing chains.
 URL: https://github.com/dalyanalytics/shinyfa, https://dalyanalytics.github.io/shinyfa/
+BugReports: https://github.com/dalyanalytics/shinyfa/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -12,5 +18,6 @@ RoxygenNote: 7.3.2
 Imports:
     stringr
 Suggests: 
+    dplyr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
