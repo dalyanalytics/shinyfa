@@ -1,14 +1,14 @@
 Package: shinyfa
-Title: Analyze the File Contents of Shiny Directories
-Version: 0.0.0.9000
+Title: Analyze the File Contents of 'shiny' Directories
+Version: 0.0.1
 Authors@R: person("Jasmine", "Daly",  email = "jasmine.dumas@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8006-2428"))
 Description: Provides tools for analyzing and understanding the file contents of 
-    large Shiny application directories. The package extracts key information about 
-    render functions, reactive functions, and their inputs from Shiny app files, 
+    large 'shiny' application directories. The package extracts key information about 
+    render functions, reactive functions, and their inputs from app files, 
     organizing them into structured data frames for easy reference. This streamlines 
     the onboarding process for new contributors and helps identify areas for 
-    optimization in complex Shiny codebases with multiple files and sourcing chains.
+    optimization in complex 'shiny' codebases with multiple files and sourcing chains.
 URL: https://github.com/dalyanalytics/shinyfa, https://dalyanalytics.github.io/shinyfa/
 BugReports: https://github.com/dalyanalytics/shinyfa/issues
 License: MIT + file LICENSE
